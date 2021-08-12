@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormGroup from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
 
-function PracticalExperience({id, updateIndividualPracticalExperience}) {
+function PracticalExperience({
+  id, 
+  updateIndividualPracticalExperience,
+  deletePracticalExperience
+}) {
   let idNum = id.slice((id.search(/\d/)), id.length);
   let formCompanyNameId = `formCompanyName-${idNum}`;
   let formPositionTitleId = `formPositionTitle-${idNum}`;
@@ -52,6 +55,7 @@ function PracticalExperience({id, updateIndividualPracticalExperience}) {
           onChange={updateIndividualPracticalExperience}
         />
       </FormGroup>
+      <Button onClick={deletePracticalExperience}>DELETE</Button>
     </Form>
   );
 }

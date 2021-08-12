@@ -1,7 +1,11 @@
 .main-background {
-  background-color: blueviolet;
+  background: #264653;
 }
 
-body {
-  background-color: darkgray;
+.secondary-background{
+  background: #2a9d8f;
+}
+
+.secondary-header{
+  color: #023047;
 }

@@ -54,6 +54,12 @@ function App() {
     educationCounter++
     setEducationExperience(educationExperience => [...educationExperience, { id: `education${educationCounter}`, institution: "School of BCD", duration: "1234", titleStudy:"olvl" }])
   }
+    //for Delete button
+  const deleteEducationExperience = (e) => {
+    let targetParentId = e.target.parentElement.id.slice()
+    let copyArr = educationExperience.filter(item => item.id != targetParentId);
+    setEducationExperience(copyArr);
+  };
     //update each key in educationExperience object base on id
   const updateIndividualEducationExperience = (e) => {
     //get id number using - as stop
@@ -92,6 +98,12 @@ function App() {
       practicalCounter++
       setPracticalExperience(practicalExperience => [...practicalExperience, { id: `practical${practicalCounter}`, companyName: "ABC Company", positionTitle: "Inset Title here", jobDetail:"NIL", otherDetail: "NIL" }])
     };
+    //For Delete Button
+    const deletePracticalExperience = (e) => {
+      let targetParentId = e.target.parentElement.id.slice()
+      let copyArr = practicalExperience.filter(item => item.id != targetParentId);
+      setPracticalExperience(copyArr);
+    }
 
     //update each key in practicalExperience object base on id
     const updateIndividualPracticalExperience = (e) => {
@@ -129,9 +141,9 @@ function App() {
     };
 
   return (
-    <Container fluid className="bg-primary min-vh-100">
+    <Container fluid className="main-background min-vh-100">
       <header>
-        <h1 className="text-center">CV Application</h1>
+        <h1 className="text-center text-white">CV Application</h1>
       </header>
       <UserInput 
         updateName={updateName}
@@ -141,10 +153,12 @@ function App() {
         updatePhoto={updatePhoto}
         updateEducationExperience={updateEducationExperience}
         updateIndividualEducationExperience={updateIndividualEducationExperience}
+        deleteEducationExperience={deleteEducationExperience}
         educationExperience={educationExperience}
 
         updatePracticalExperience={updatePracticalExperience}
         updateIndividualPracticalExperience={updateIndividualPracticalExperience}
+        deletePracticalExperience={deletePracticalExperience}
         practicalExperience={practicalExperience}
       />
       <CVPreview 

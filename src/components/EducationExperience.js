@@ -4,8 +4,13 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormGroup from "react-bootstrap/FormGroup";
+import Button from "react-bootstrap/Button";
 
-function EducationExperience({ id, updateIndividualEducationExperience }) {
+function EducationExperience({ 
+  id,
+  updateIndividualEducationExperience,
+  deleteEducationExperience 
+}) {
   let idNum = id.slice((id.search(/\d/)), id.length);
   let formInstitutionNameId = `formInstitutionName-${idNum}`;
   let formDurationOfStudyId = `formDurationOfStudy-${idNum}`;
@@ -40,6 +45,7 @@ function EducationExperience({ id, updateIndividualEducationExperience }) {
           onChange={updateIndividualEducationExperience}
         />
       </FormGroup>
+      <Button onClick={deleteEducationExperience}>DELETE</Button>
     </Form>
   )
 }

@@ -6,6 +6,7 @@ import PersonalInformation from "./PersonalInformation";
 import EducationExperience from "./EducationExperience";
 import PracticalExperience from "./PracticalExperience";
 
+
 import uniqid from 'uniqid';
 
 function UserInput({
@@ -16,9 +17,11 @@ function UserInput({
   updatePhoto,
   updateEducationExperience,
   updateIndividualEducationExperience,
+  deleteEducationExperience,
   educationExperience,
   updatePracticalExperience,
   updateIndividualPracticalExperience,
+  deletePracticalExperience,
   practicalExperience
 }) {
 
@@ -26,9 +29,11 @@ function UserInput({
     let componentArr = [];
     for (let i = 0; i < educationExperience.length; i++) {
       componentArr.push(<EducationExperience 
-        updateIndividualEducationExperience={updateIndividualEducationExperience} 
+        updateIndividualEducationExperience={updateIndividualEducationExperience}
+        deleteEducationExperience={deleteEducationExperience} 
         id = {educationExperience[i].id}
         key = {educationExperience[i].id}
+
       />);
     }
     return componentArr;
@@ -39,6 +44,7 @@ function UserInput({
     for (let i = 0; i < practicalExperience.length; i++) {
       componentArr.push(<PracticalExperience 
         updateIndividualPracticalExperience={updateIndividualPracticalExperience}
+        deletePracticalExperience={deletePracticalExperience}
         id = {practicalExperience[i].id}
         key = {practicalExperience[i].id}
       />)
@@ -55,8 +61,8 @@ function UserInput({
   });
 
   return(
-    <Container className="bg-success">
-      <h1>Personal Information</h1>
+    <Container className="secondary-background">
+      <h1 className="text-center secondary-header">Personal Information</h1>
       <PersonalInformation 
         updateName={updateName}
         updateEmail={updateEmail}
@@ -65,7 +71,7 @@ function UserInput({
         updatePhoto={updatePhoto}
       />
 
-      <h1>Education Experience</h1>
+      <h1 className="text-center secondary-header">Education Experience</h1>
       <Container>
         {returnEducationExperience()}
       </Container>
@@ -73,7 +79,7 @@ function UserInput({
       
       <Button onClick={updateEducationExperience}>Add New Education Experience</Button>
       
-      <h1>Practical Experience</h1>
+      <h1 className="text-center secondary-header">Practical Experience</h1>
       <Container>
         {returnPracticalExperience()}
       </Container>
